@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía Interactiva: Dinámica y Táctica del Balonmano</title>
+<meta name="description" content="Infografía educativa interactiva sobre balonmano para adultos">
+<meta name="theme-color" content="#0a1628">
+<link rel="manifest" id="pwa-manifest">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0a1628;
+  --bg-secondary: #0f1f3a;
+  --bg-card: rgba(15,31,58,0.75);
+  --bg-glass: rgba(15,31,58,0.45);
+  --accent-cyan: #00d4ff;
+  --accent-teal: #00bfa5;
+  --accent-amber: #ffab00;
+  --accent-orange: #ff6d00;
+  --accent-blue: #2979ff;
+  --text-primary: #e8eaf6;
+  --text-secondary: #90a4ae;
+  --text-muted: #607d8b;
+  --border-glass: rgba(0,212,255,0.15);
+  --glow-cyan: 0 0 20px rgba(0,212,255,0.25);
+  --glow-amber: 0 0 20px rgba(255,171,0,0.2);
+  --radius-card: 16px;
+  --radius-sm: 10px;
+  --transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  font-family:var(--font-main);
+  background:var(--bg-primary);
+  color:var(--text-primary);
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+.skip-link{
+  position:absolute;top:-100%;left:50%;transform:translateX(-50%);
+  background:var(--accent-cyan);color:#000;padding:8px 24px;border-radius:0 0 8px 8px;
+  z-index:9999;font-weight:600;text-decoration:none;transition:top .3s;
+}
+.skip-link:focus{top:0}
+.high-contrast{
+  --bg-primary:#000;--bg-secondary:#111;--bg-card:rgba(20,20,20,0.9);
+  --text-primary:#fff;--text-secondary:#ccc;--text-muted:#aaa;
+  --accent-cyan:#00e5ff;--accent-amber:#ffd740;
+}
+
+/* NAVBAR */
+.navbar-custom{
+  background:rgba(10,22,40,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border-glass);padding:.65rem 0;
+  transition:var(--transition);
+}
+.navbar-brand-text{font-weight:800;font-size:1.15rem;letter-spacing:-.3px;color:var(--accent-cyan)!important}
+.navbar-custom .nav-link{
+  color:var(--text-secondary)!important;font-weight:500;font-size:.88rem;
+  padding:.45rem .9rem!important;border-radius:8px;transition:var(--transition);
+}
+.navbar-custom .nav-link:hover,.navbar-custom .nav-link:focus{color:var(--accent-cyan)!important;background:rgba(0,212,255,0.08)}
+.btn-contrast{
+  background:transparent;border:1px solid var(--text-muted);color:var(--text-secondary);
+  font-size:.8rem;padding:.3rem .7rem;border-radius:6px;cursor:pointer;transition:var(--transition);
+}
+.btn-contrast:hover{border-color:var(--accent-cyan);color:var(--accent-cyan)}
+.btn-contrast.active{background:var(--accent-cyan);color:#000;border-color:var(--accent-cyan)}
+
+/* HERO */
+.hero-section{
+  position:relative;min-height:92vh;display:flex;align-items:center;
+  overflow:hidden;padding:6rem 0 4rem;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 40%, rgba(0,212,255,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 30%, rgba(41,121,255,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 50% 80%, rgba(255,171,0,0.05) 0%, transparent 50%),
+    var(--bg-primary);
+}
+.hero-grid-lines{
+  position:absolute;inset:0;z-index:0;opacity:.04;
+  background-image:
+    linear-gradient(var(--accent-cyan) 1px, transparent 1px),
+    linear-gradient(90deg, var(--accent-cyan) 1px, transparent 1px);
+  background-size:60px 60px;
+}
+.hero-content{position:relative;z-index:2}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);
+  color:var(--accent-cyan);font-size:.78rem;font-weight:600;
+  padding:6px 16px;border-radius:20px;margin-bottom:1.5rem;letter-spacing:.5px;
+}
+.hero-title{
+  font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:900;line-height:1.08;
+  letter-spacing:-1.5px;margin-bottom:1.2rem;
+}
+.hero-title span{color:var(--accent-cyan)}
+.hero-subtitle{
+  font-size:clamp(1.05rem,2vw,1.3rem);color:var(--text-secondary);
+  font-weight:400;max-width:600px;margin-bottom:1.5rem;line-height:1.6;
+}
+.hero-value{
+  font-size:.95rem;color:var(--accent-amber);font-weight:500;
+  font-style:italic;margin-bottom:2rem;max-width:550px;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-hero{
+  padding:12px 28px;border-radius:12px;font-weight:600;font-size:.95rem;
+  transition:var(--transition);cursor:pointer;text-decoration:none;
+}
+.btn-hero-primary{background:var(--accent-cyan);color:#000;border:none}
+.btn-hero-primary:hover{background:#33ddff;transform:translateY(-2px);box-shadow:var(--glow-cyan)}
+.btn-hero-outline{background:transparent;color:var(--accent-cyan);border:1.5px solid rgba(0,212,255,0.4)}
+.btn-hero-outline:hover{background:rgba(0,212,255,0.08);border-color:var(--accent-cyan);transform:translateY(-2px)}
+
+.hero-metrics{display:flex;gap:2rem;flex-wrap:wrap}
+.hero-metric{text-align:center}
+.hero-metric-val{
+  font-size:1.8rem;font-weight:800;font-family:var(--font-mono);
+  color:var(--accent-cyan);line-height:1;
+}
+.hero-metric-label{font-size:.78rem;color:var(--text-muted);margin-top:4px;font-weight:500}
+
+/* Floating orbs */
+.orb{
+  position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;z-index:1;
+  animation:orbFloat 8s ease-in-out infinite;
+}
+.orb-1{width:300px;height:300px;background:var(--accent-cyan);top:10%;right:5%;animation-delay:0s}
+.orb-2{width:200px;height:200px;background:var(--accent-blue);bottom:15%;left:8%;animation-delay:3s}
+.orb-3{width:150px;height:150px;background:var(--accent-amber);top:60%;right:20%;animation-delay:5s}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+
+/* SECTION COMMONS */
+.section-padding{padding:5rem 0}
+.section-header{text-align:center;margin-bottom:3.5rem}
+.section-label{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--accent-cyan);font-size:.78rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem;
+}
+.section-title{
+  font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;
+  letter-spacing:-.8px;margin-bottom:.7rem;
+}
+.section-desc{color:var(--text-secondary);max-width:600px;margin:0 auto;font-size:1rem}
+
+/* BENTO GRID */
+.bento-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:1.25rem;
+}
+.bento-card{
+  background:var(--bg-card);
+  border:1px solid var(--border-glass);
+  border-radius:var(--radius-card);
+  padding:1.8rem;
+  position:relative;
+  overflow:hidden;
+  transition:var(--transition);
+  cursor:pointer;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.bento-card::before{
+  content:'';position:absolute;inset:0;border-radius:var(--radius-card);
+  background:linear-gradient(135deg,rgba(0,212,255,0.04) 0%,transparent 60%);
+  opacity:0;transition:opacity .4s;
+}
+.bento-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(0,212,255,0.35);
+  box-shadow:0 8px 32px rgba(0,212,255,0.1), 0 0 0 1px rgba(0,212,255,0.08);
+}
+.bento-card:hover::before{opacity:1}
+.bento-card-icon{
+  width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;margin-bottom:1rem;transition:var(--transition);
+}
+.bento-card-title{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.2px}
+.bento-card-desc{font-size:.88rem;color:var(--text-secondary);line-height:1.55}
+.bento-card-tag{
+  position:absolute;top:1rem;right:1rem;
+  font-size:.68rem;font-weight:600;padding:3px 10px;border-radius:6px;
+  letter-spacing:.3px;
+}
+
+/* Spans for bento */
+.bento-wide{grid-column:span 2}
+.bento-tall{grid-row:span 2}
+@media(max-width:768px){
+  .bento-wide,.bento-tall{grid-column:span 1;grid-row:span 1}
+}
+
+/* Icon color variants */
+.icon-cyan{background:rgba(0,212,255,0.12);color:var(--accent-cyan)}
+.icon-teal{background:rgba(0,191,165,0.12);color:var(--accent-teal)}
+.icon-amber{background:rgba(255,171,0,0.12);color:var(--accent-amber)}
+.icon-orange{background:rgba(255,109,0,0.12);color:var(--accent-orange)}
+.icon-blue{background:rgba(41,121,255,0.12);color:var(--accent-blue)}
+
+/* COURT DIAGRAM */
+.court-container{
+  background:var(--bg-card);border:1px solid var(--border-glass);
+  border-radius:var(--radius-card);padding:2rem;backdrop-filter:blur(12px);
+  position:relative;overflow:hidden;
+}
+.court-svg{width:100%;max-width:750px;margin:0 auto;display:block}
+.court-zone-label{
+  font-size:.7rem;fill:var(--text-muted);font-family:var(--font-main);
+  font-weight:600;letter-spacing:.5px;
+}
+.court-line{stroke:var(--accent-cyan);stroke-width:1.5;fill:none;opacity:.7}
+.court-line-dashed{stroke:var(--accent-cyan);stroke-width:1;fill:none;opacity:.4;stroke-dasharray:6 4}
+.court-area{fill:rgba(0,212,255,0.06);stroke:var(--accent-cyan);stroke-width:1.5;opacity:.7}
+.court-goal{fill:none;stroke:var(--accent-amber);stroke-width:2.5}
+.court-center-line{stroke:var(--text-muted);stroke-width:1;stroke-dasharray:8 4;opacity:.3}
+.court-zone-hot{fill:rgba(255,109,0,0.08)}
+.court-dim-text{font-size:.6rem;fill:var(--accent-amber);font-family:var(--font-mono);font-weight:600}
+
+.court-legend{
+  display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.5rem;justify-content:center;
+}
+.court-legend-item{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text-secondary)}
+.court-legend-swatch{width:28px;height:4px;border-radius:2px}
+
+/* POSITION CARDS */
+.position-card{
+  background:var(--bg-card);border:1px solid var(--border-glass);
+  border-radius:var(--radius-card);padding:1.5rem;
+  transition:var(--transition);position:relative;overflow:hidden;
+  backdrop-filter:blur(12px);
+}
+.position-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(0,212,255,0.3);
+  box-shadow:0 4px 24px rgba(0,212,255,0.08);
+}
+.position-header{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
+.position-icon{
+  width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+}
+.position-name{font-size:1.05rem;font-weight:700;letter-spacing:-.2px}
+.position-role{font-size:.75rem;color:var(--accent-cyan);font-weight:600;margin-top:2px}
+.position-attrs{display:flex;flex-wrap:wrap;gap:6px;margin-top:.8rem}
+.position-attr{
+  font-size:.72rem;padding:3px 10px;border-radius:6px;
+  background:rgba(0,212,255,0.08);color:var(--accent-cyan);
+  font-weight:500;border:1px solid rgba(0,212,255,0.12);
+}
+.position-desc{font-size:.85rem;color:var(--text-secondary);line-height:1.55;margin-top:.8rem}
+
+/* TECHNIQUE CARDS */
+.technique-card{
+  background:var(--bg-card);border:1px solid var(--border-glass);
+  border-radius:var(--radius-card);padding:2rem;
+  transition:var(--transition);position:relative;overflow:hidden;
+  backdrop-filter:blur(12px);
+}
+.technique-card:hover{
+  transform:translateY(-3px) scale(1.01);
+  box-shadow:0 8px 30px rgba(0,0,0,0.3);
+}
+.technique-card-accent{
+  position:absolute;top:0;left:0;width:4px;height:100%;border-radius:4px 0 0 4px;
+}
+.technique-title{font-size:1.2rem;font-weight:800;margin-bottom:.3rem;letter-spacing:-.3px}
+.technique-subtitle{font-size:.82rem;color:var(--accent-amber);font-weight:600;margin-bottom:1rem}
+.technique-detail{font-size:.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:.7rem}
+.technique-detail strong{color:var(--text-primary);font-weight:600}
+
+/* GOALKEEPER MODULE */
+.gk-module{
+  background:linear-gradient(135deg,rgba(255,171,0,0.06) 0%,var(--bg-card) 50%);
+  border:1px solid rgba(255,171,0,0.2);border-radius:var(--radius-card);
+  padding:2.5rem;position:relative;overflow:hidden;
+  backdrop-filter:blur(12px);
+}
+.gk-module::before{
+  content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(255,171,0,0.06) 0%,transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+.gk-title{font-size:1.5rem;font-weight:800;margin-bottom:.4rem;letter-spacing:-.5px}
+.gk-subtitle{color:var(--accent-amber);font-size:.9rem;font-weight:600;margin-bottom:1.5rem}
+.gk-features{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem}
+.gk-feature{
+  background:rgba(255,171,0,0.06);border:1px solid rgba(255,171,0,0.12);
+  border-radius:var(--radius-sm);padding:1.2rem;transition:var(--transition);
+}
+.gk-feature:hover{border-color:rgba(255,171,0,0.3);transform:translateY(-2px)}
+.gk-feature-icon{font-size:1.4rem;margin-bottom:.5rem}
+.gk-feature-title{font-size:.9rem;font-weight:700;margin-bottom:.3rem}
+.gk-feature-desc{font-size:.82rem;color:var(--text-secondary);line-height:1.5}
+
+/* TACTICS */
+.tactic-item{
+  background:var(--bg-card);border:1px solid var(--border-glass);
+  border-radius:var(--radius-card);padding:1.5rem;
+  transition:var(--transition);position:relative;overflow:hidden;
+  backdrop-filter:blur(12px);
+}
+.tactic-item:hover{
+  border-color:rgba(0,191,165,0.35);
+  box-shadow:0 4px 20px rgba(0,191,165,0.08);
+  transform:translateY(-2px);
+}
+.tactic-number{
+  font-size:2rem;font-weight:900;font-family:var(--font-mono);
+  color:rgba(0,191,165,0.2);position:absolute;top:.8rem;right:1rem;line-height:1;
+}
+.tactic-name{font-size:1rem;font-weight:700;margin-bottom:.4rem;color:var(--accent-teal)}
+.tactic-desc{font-size:.85rem;color:var(--text-secondary);line-height:1.55}
+
+/* HISTORY MODULE */
+.history-timeline{
+  position:relative;padding-left:2rem;
+}
+.history-timeline::before{
+  content:'';position:absolute;left:7px;top:0;bottom:0;
+  width:2px;background:linear-gradient(180deg,var(--accent-cyan),var(--accent-blue));
+  border-radius:2px;
+}
+.history-item{position:relative;margin-bottom:1.8rem;padding-left:1.2rem}
+.history-item::before{
+  content:'';position:absolute;left:-2rem;top:6px;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--accent-cyan);border:3px solid var(--bg-primary);z-index:1;
+}
+.history-year{font-size:.78rem;color:var(--accent-cyan);font-weight:700;font-family:var(--font-mono)}
+.history-text{font-size:.88rem;color:var(--text-secondary);line-height:1.55;margin-top:2px}
+
+/* QUIZ */
+.quiz-container{
+  background:var(--bg-card);border:1px solid var(--border-glass);
+  border-radius:var(--radius-card);padding:2rem;
+  backdrop-filter:blur(12px);
+}
+.quiz-progress{
+  height:6px;background:rgba(0,212,255,0.1);border-radius:3px;
+  margin-bottom:1.5rem;overflow:hidden;
+}
+.quiz-progress-bar{height:100%;background:var(--accent-cyan);border-radius:3px;transition:width .4s}
+.quiz-question-num{font-size:.78rem;color:var(--accent-cyan);font-weight:600;margin-bottom:.4rem}
+.quiz-question{font-size:1.05rem;font-weight:600;margin-bottom:1.2rem;line-height:1.5}
+.quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem}
+.quiz-option{
+  background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.1);
+  border-radius:10px;padding:.75rem 1rem;cursor:pointer;
+  transition:var(--transition);font-size:.9rem;color:var(--text-secondary);
+  text-align:left;width:100%;
+}
+.quiz-option:hover{border-color:rgba(0,212,255,0.3);background:rgba(0,212,255,0.08);color:var(--text-primary)}
+.quiz-option:focus-visible{outline:2px solid var(--accent-cyan);outline-offset:2px}
+.quiz-option.selected{border-color:var(--accent-cyan);background:rgba(0,212,255,0.12);color:var(--text-primary)}
+.quiz-option.correct{border-color:#00c853;background:rgba(0,200,83,0.12);color:#69f0ae}
+.quiz-option.incorrect{border-color:#ff1744;background:rgba(255,23,68,0.1);color:#ff5252}
+.quiz-feedback{
+  padding:1rem;border-radius:10px;margin-bottom:1rem;font-size:.88rem;
+  line-height:1.5;display:none;
+}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct-fb{background:rgba(0,200,83,0.08);border:1px solid rgba(0,200,83,0.2);color:#69f0ae}
+.quiz-feedback.incorrect-fb{background:rgba(255,23,68,0.06);border:1px solid rgba(255,23,68,0.15);color:#ff5252}
+.quiz-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-quiz{
+  padding:10px 22px;border-radius:10px;font-weight:600;font-size:.9rem;
+  cursor:pointer;transition:var(--transition);border:none;
+}
+.btn-quiz-primary{background:var(--accent-cyan);color:#000}
+.btn-quiz-primary:hover{background:#33ddff;transform:translateY(-1px)}
+.btn-quiz-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn-quiz-secondary{background:transparent;color:var(--accent-cyan);border:1px solid rgba(0,212,255,0.3)}
+.btn-quiz-secondary:hover{background:rgba(0,212,255,0.06)}
+
+.quiz-result{
+  text-align:center;padding:2rem 0;
+}
+.quiz-result-score{font-size:3rem;font-weight:900;font-family:var(--font-mono);color:var(--accent-cyan)}
+.quiz-result-label{font-size:1rem;color:var(--text-secondary);margin-top:.3rem}
+.quiz-result-msg{font-size:1.1rem;font-weight:600;margin-top:1rem;color:var(--accent-amber)}
+
+/* MODAL */
+.modal-custom .modal-content{
+  background:var(--bg-secondary);border:1px solid var(--border-glass);
+  border-radius:var(--radius-card);backdrop-filter:blur(20px);
+}
+.modal-custom .modal-header{border-bottom:1px solid var(--border-glass);padding:1.2rem 1.5rem}
+.modal-custom .modal-title{font-weight:700;font-size:1.1rem}
+.modal-custom .modal-body{padding:1.5rem}
+.modal-custom .btn-close{filter:invert(1) grayscale(100%) brightness(200%)}
+
+/* ACCORDION */
+.accordion-custom .accordion-item{
+  background:var(--bg-card);border:1px solid var(--border-glass);
+  border-radius:var(--radius-sm)!important;margin-bottom:8px;overflow:hidden;
+}
+.accordion-custom .accordion-button{
+  background:transparent;color:var(--text-primary);font-weight:600;
+  font-size:.95rem;box-shadow:none;padding:1rem 1.2rem;
+}
+.accordion-custom .accordion-button:not(.collapsed){
+  background:rgba(0,212,255,0.05);color:var(--accent-cyan);
+}
+.accordion-custom .accordion-button::after{filter:invert(1) brightness(2)}
+.accordion-custom .accordion-body{
+  color:var(--text-secondary);font-size:.88rem;line-height:1.6;padding:0 1.2rem 1rem;
+}
+
+/* TAKEAWAY BAND */
+.takeaway-band{
+  background:linear-gradient(135deg,rgba(0,212,255,0.06) 0%,rgba(41,121,255,0.04) 100%);
+  border-top:1px solid var(--border-glass);border-bottom:1px solid var(--border-glass);
+  padding:3rem 0;
+}
+.takeaway-item{text-align:center;padding:1rem}
+.takeaway-icon{font-size:1.8rem;margin-bottom:.5rem;color:var(--accent-cyan)}
+.takeaway-text{font-size:.9rem;font-weight:600;color:var(--text-primary);line-height:1.45}
+.takeaway-sub{font-size:.78rem;color:var(--text-muted);margin-top:.3rem}
+
+/* FOOTER */
+.footer{
+  background:rgba(10,22,40,0.95);border-top:1px solid var(--border-glass);
+  padding:2rem 0;text-align:center;
+}
+.footer-text{font-size:.8rem;color:var(--text-muted)}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:576px){
+  .hero-section{min-height:80vh;padding:5rem 0 3rem}
+  .hero-metrics{gap:1.2rem}
+  .hero-metric-val{font-size:1.4rem}
+  .section-padding{padding:3rem 0}
+  .bento-grid{grid-template-columns:1fr}
+  .gk-features{grid-template-columns:1fr}
+  .court-container{padding:1rem}
+}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:0.01ms!important}
+  .fade-up{opacity:1;transform:none}
+}
+
+/* FOCUS VISIBLE */
+*:focus-visible{
+  outline:2px solid var(--accent-cyan);outline-offset:2px;
+  border-radius:4px;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--bg-primary)}
+::-webkit-scrollbar-thumb{background:rgba(0,212,255,0.2);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:rgba(0,212,255,0.35)}
+
+/* Connector lines for hub */
+.connector-svg{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;opacity:.15;
+}
+
+/* BALL INFO */
+.ball-info{
+  display:flex;align-items:center;gap:1rem;
+  background:var(--bg-card);border:1px solid var(--border-glass);
+  border-radius:var(--radius-card);padding:1.5rem;
+  backdrop-filter:blur(12px);
+}
+.ball-icon{
+  width:56px;height:56px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,rgba(255,171,0,0.3),rgba(255,109,0,0.1));
+  border:2px solid rgba(255,171,0,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Saltar al contenido</a>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top" role="navigation" aria-label="Navegación principal">
+  <div class="container">
+    <a class="navbar-brand navbar-brand-text" href="#">
+      <i class="bi bi-hexagon-fill me-1"></i> Balonmano
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Abrir menú">
+      <i class="bi bi-list text-white fs-4"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto me-3">
+        <li class="nav-item"><a class="nav-link" href="#hub">Módulos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#cancha">Cancha</a></li>
+        <li class="nav-item"><a class="nav-link" href="#posiciones">Posiciones</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tecnicas">Técnicas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portero">Portero</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tacticas">Tácticas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#quiz">Autoevaluación</a></li>
+      </ul>
+      <button class="btn-contrast" id="btnContrast" aria-label="Activar alto contraste">
+        <i class="bi bi-circle-half"></i> Contraste
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<!-- ========== HERO ========== -->
+<section class="hero-section" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="container hero-content">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <div class="hero-badge"><i class="bi bi-lightning-charge-fill"></i> INFOGRAFÍA INTERACTIVA</div>
+        <h1 class="hero-title">Dinámica y Táctica<br>del <span>Balonmano</span></h1>
+        <p class="hero-subtitle">Recurso educativo inmersivo para comprender los fundamentos tácticos, reglamentarios y dinámicos del balonmano, diseñado para aprendizaje autónomo y profundo.</p>
+        <p class="hero-value">Comprender el balonmano no es solo conocer sus reglas, es dominar la lógica táctica que guía cada decisión en la cancha.</p>
+        <div class="hero-btns">
+          <a href="#hub" class="btn-hero btn-hero-primary"><i class="bi bi-compass me-2"></i>Explorar módulos</a>
+          <a href="#quiz" class="btn-hero btn-hero-outline"><i class="bi bi-patch-question me-2"></i>Autoevaluarme</a>
+        </div>
+        <div class="hero-metrics" id="heroMetrics"></div>
+      </div>
+      <div class="col-lg-5 d-none d-lg-flex justify-content-center">
+        <svg viewBox="0 0 320 320" width="320" height="320" style="opacity:.85" aria-hidden="true">
+          <!-- Central node -->
+          <circle cx="160" cy="160" r="40" fill="rgba(0,212,255,0.1)" stroke="var(--accent-cyan)" stroke-width="2"/>
+          <text x="160" y="155" text-anchor="middle" fill="var(--accent-cyan)" font-size="11" font-weight="700" font-family="Inter">BALON-</text>
+          <text x="160" y="170" text-anchor="middle" fill="var(--accent-cyan)" font-size="11" font-weight="700" font-family="Inter">MANO</text>
+          <!-- Satellites -->
+          <g id="heroSatellites"></g>
+          <!-- Connection lines -->
+          <g id="heroLines" opacity=".25"></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HUB / BENTO GRID ========== -->
+<section class="section-padding" id="hub">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label"><i class="bi bi-grid-3x3-gap-fill"></i> HUB CENTRAL</div>
+      <h2 class="section-title">Módulos de Aprendizaje</h2>
+      <p class="section-desc">Explora cada aspecto del balonmano de forma modular. Profundiza a tu ritmo en los contenidos que más te interesen.</p>
+    </div>
+    <div class="bento-grid" id="hubGrid"></div>
+  </div>
+</section>
+
+<!-- ========== HISTORIA ========== -->
+<section class="section-padding" id="historia">
+  <div class="container">
+    <div class="row align-items-start">
+      <div class="col-lg-5 fade-up">
+        <div class="section-label"><i class="bi bi-clock-history"></i> ORÍGENES</div>
+        <h2 class="section-title" style="text-align:left">Historia del Balonmano</h2>
+        <p class="section-desc" style="margin:0;text-align:left">El balonmano es el tercer deporte en importancia de España. Desde la antigua Grecia hasta la consolidación moderna, su evolución refleja la transformación de un juego derivado del fútbol a un deporte táctico de alta velocidad.</p>
+      </div>
+      <div class="col-lg-7 fade-up">
+        <div class="history-timeline" id="historyTimeline"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CANCHA ========== -->
+<section class="section-padding" id="cancha">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label"><i class="bi bi-map"></i> ESPACIO DE JUEGO</div>
+      <h2 class="section-title">La Cancha de Balonmano</h2>
+      <p class="section-desc">Dimensión oficial: 40 m × 20 m. Cada zona tiene una función táctica específica que condiciona las decisiones de ataque y defensa.</p>
+    </div>
+    <div class="court-container fade-up">
+      <svg class="court-svg" viewBox="0 0 800 420" aria-label="Diagrama de la cancha de balonmano">
+        <!-- Field background -->
+        <rect x="50" y="10" width="700" height="400" fill="rgba(0,212,255,0.03)" rx="4"/>
+        <!-- Field outline -->
+        <rect x="50" y="10" width="700" height="400" class="court-line" rx="4"/>
+        <!-- Center line -->
+        <line x1="400" y1="10" x2="400" y2="410" class="court-center-line"/>
+        <!-- Center circle -->
+        <circle cx="400" cy="210" r="45" class="court-line-dashed"/>
+        <!-- Left 6m area -->
+        <rect x="50" y="130" width="90" height="160" class="court-area" rx="2"/>
+        <line x1="140" y1="130" x2="140" y2="290" stroke="var(--accent-cyan)" stroke-width="2" opacity=".7"/>
+        <text x="95" y="215" class="court-zone-label" text-anchor="middle">6 m</text>
+        <!-- Right 6m area -->
+        <rect x="660" y="130" width="90" height="160" class="court-area" rx="2"/>
+        <line x1="660" y1="130" x2="660" y2="290" stroke="var(--accent-cyan)" stroke-width="2" opacity=".7"/>
+        <text x="705" y="215" class="court-zone-label" text-anchor="middle">6 m</text>
+        <!-- Left 7m line -->
+        <line x1="115" y1="180" x2="115" y2="240" stroke="var(--accent-amber)" stroke-width="2.5" opacity=".8"/>
+        <text x="115" y="260" class="court-dim-text" text-anchor="middle">7 m</text>
+        <!-- Right 7m line -->
+        <line x1="685" y1="180" x2="685" y2="240" stroke="var(--accent-amber)" stroke-width="2.5" opacity=".8"/>
+        <text x="685" y="260" class="court-dim-text" text-anchor="middle">7 m</text>
+        <!-- Left 9m line (dashed) -->
+        <path d="M 155 175 Q 170 130 200 120 L 200 300 Q 170 290 155 245" class="court-line-dashed"/>
+        <text x="180" y="215" class="court-zone-label" text-anchor="middle" opacity=".6">9 m</text>
+        <!-- Right 9m line (dashed) -->
+        <path d="M 645 175 Q 630 130 600 120 L 600 300 Q 630 290 645 245" class="court-line-dashed"/>
+        <text x="620" y="215" class="court-zone-label" text-anchor="middle" opacity=".6">9 m</text>
+        <!-- Goals -->
+        <rect x="44" y="190" width="8" height="40" class="court-goal" rx="2"/>
+        <rect x="748" y="190" width="8" height="40" class="court-goal" rx="2"/>
+        <!-- Goal labels -->
+        <text x="30" y="215" class="court-dim-text" text-anchor="middle" transform="rotate(-90,30,215)">PORTERÍA</text>
+        <text x="770" y="215" class="court-dim-text" text-anchor="middle" transform="rotate(90,770,215)">PORTERÍA</text>
+        <!-- Dimension labels -->
+        <text x="400" y="430" class="court-dim-text" text-anchor="middle" font-size=".7rem">40 m</text>
+        <text x="35" y="215" class="court-dim-text" text-anchor="middle" font-size=".65rem" transform="rotate(-90,35,215)">20 m</text>
+        <!-- Zone explanations -->
+        <rect x="155" y="135" width="190" height="150" fill="rgba(255,109,0,0.04)" rx="8"/>
+        <text x="250" y="175" font-size=".65rem" fill="var(--accent-orange)" font-family="Inter" font-weight="600" text-anchor="middle" opacity=".7">ZONA DE ATAQUE</text>
+        <text x="250" y="190" font-size=".55rem" fill="var(--text-muted)" font-family="Inter" text-anchor="middle">Lanzamientos y desmarques</text>
+        <rect x="455" y="135" width="190" height="150" fill="rgba(0,191,165,0.04)" rx="8"/>
+        <text x="550" y="175" font-size=".65rem" fill="var(--accent-teal)" font-family="Inter" font-weight="600" text-anchor="middle" opacity=".7">ZONA DEFENSIVA</text>
+        <text x="550" y="190" font-size=".55rem" fill="var(--text-muted)" font-family="Inter" text-anchor="middle">Bloqueo y cobertura</text>
+      </svg>
+      <div class="court-legend" id="courtLegend"></div>
+    </div>
+
+    <!-- Ball info -->
+    <div class="row mt-4">
+      <div class="col-12 fade-up">
+        <div class="ball-info">
+          <div class="ball-icon"><i class="bi bi-circle-fill" style="color:var(--accent-amber)"></i></div>
+          <div>
+            <div style="font-weight:700;font-size:1rem">El Balón</div>
+            <div style="font-size:.88rem;color:var(--text-secondary)">Está hecho de cuero. Se sujeta con las yemas de los dedos, lo que exige un control fino y preciso. El equipo que recibe la pelota debe levantarla si viene demasiado baja, recurriendo a caídas y planchas que resultan espectaculares.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== POSICIONES ========== -->
+<section class="section-padding" id="posiciones">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label"><i class="bi bi-people-fill"></i> POSICIONES</div>
+      <h2 class="section-title">Posiciones y Roles Tácticos</h2>
+      <p class="section-desc">Cada posición tiene una función específica dentro del sistema ofensivo y defensivo. El perfil varía según la posición, pero todos comparten requisitos de potencia, explosividad, velocidad y técnica.</p>
+    </div>
+    <div class="row g-3" id="positionsGrid"></div>
+  </div>
+</section>
+
+<!-- ========== TÉCNICAS DE LANZAMIENTO ========== -->
+<section class="section-padding" id="tecnicas">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label"><i class="bi bi-bullseye"></i> TÉCNICAS</div>
+      <h2 class="section-title">Técnicas de Lanzamiento</h2>
+      <p class="section-desc">Cada técnica de lanzamiento responde a una lectura táctica diferente del juego. Dominarlas todas amplía el arsenal ofensivo del jugador.</p>
+    </div>
+    <div class="row g-4" id="techniquesGrid"></div>
+  </div>
+</section>
+
+<!-- ========== PORTERO ========== -->
+<section class="section-padding" id="portero">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label"><i class="bi bi-shield-fill-exclamation"></i> JUGADOR CLAVE</div>
+      <h2 class="section-title">El Portero</h2>
+      <p class="section-desc">Es uno de los jugadores clave, pues de su juego depende en gran medida la seguridad defensiva del equipo. Un buen portero no solo debe ser rápido y ágil, sino también tener una gran visión de juego.</p>
+    </div>
+    <div class="gk-module fade-up">
+      <div class="row align-items-start">
+        <div class="col-lg-4 mb-3 mb-lg-0">
+          <div class="gk-title">El Guardián de la Portería</div>
+          <div class="gk-subtitle">Pilar defensivo y origen del contraataque</div>
+          <p style="font-size:.9rem;color:var(--text-secondary);line-height:1.6">La jugada más importante del portero es el penalti, en el que defiende el lanzamiento de 7m. Casi todos los contraataques nacen de sus manos, lo que le convierte en el primer atacante del equipo.</p>
+        </div>
+        <div class="col-lg-8">
+          <div class="gk-features" id="gkFeatures"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TÁCTICAS ========== -->
+<section class="section-padding" id="tacticas">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label"><i class="bi bi-diagram-3-fill"></i> DINÁMICA TÁCTICA</div>
+      <h2 class="section-title">Jugadas y Dinámica de Juego</h2>
+      <p class="section-desc">Las jugadas tácticas son la columna vertebral del ataque organizado. Cada una busca desequilibrar la defensa rival mediante movimiento, sincronización y toma de decisiones colectiva.</p>
+    </div>
+    <div class="row g-3" id="tacticsGrid"></div>
+  </div>
+</section>
+
+<!-- ========== REGLAS BÁSICAS ========== -->
+<section class="section-padding" id="reglas">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label"><i class="bi bi-journal-bookmark-fill"></i> REGLAMENTO</div>
+      <h2 class="section-title">Reglas Básicas del Balonmano</h2>
+      <p class="section-desc">Conocer las reglas esenciales permite seguir el juego con criterio y comprender las decisiones arbitrales en cada situación.</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion accordion-custom" id="rulesAccordion"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AUTOEVALUACIÓN ========== -->
+<section class="section-padding" id="quiz">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label"><i class="bi bi-patch-question-fill"></i> AUTOEVALUACIÓN</div>
+      <h2 class="section-title">Pon a Prueba tu Conocimiento</h2>
+      <p class="section-desc">Responde las siguientes preguntas para verificar tu comprensión de los fundamentos del balonmano. Recibirás retroalimentación inmediata.</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="quiz-container fade-up" id="quizContainer"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TAKEAWAY BAND ========== -->
+<section class="takeaway-band">
+  <div class="container">
+    <div class="row" id="takeawayGrid"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-text">Infografía Interactiva: Dinámica y Táctica del Balonmano &mdash; Recurso educativo para adultos</p>
+  </div>
+</footer>
+
+<!-- MODAL for hub cards -->
+<div class="modal fade modal-custom" id="hubModal" tabindex="-1" aria-labelledby="hubModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="hubModalLabel">Detalle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="hubModalBody"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ============================================================
+// DATA LAYER — All content loaded from JSON-like objects
+// ============================================================
+
+const DATA = {
+  heroMetrics: [
+    { value: '40×20', label: 'Cancha (m)' },
+    { value: '2×30', label: 'Tiempos (min)' },
+    { value: '7', label: 'Jugadores' },
+    { value: '6m', label: 'Área del portero' }
+  ],
+  heroSatellites: [
+    { label: 'Reglas', angle: 30 },
+    { label: 'Cancha', angle: 75 },
+    { label: 'Posiciones', angle: 120 },
+    { label: 'Técnicas', angle: 165 },
+    { label: 'Portero', angle: 210 },
+    { label: 'Tácticas', angle: 255 },
+    { label: 'Datos', angle: 300 },
+    { label: 'Quiz', angle: 345 }
+  ],
+  hubModules: [
+    {
+      id: 'reglas', icon: 'bi-journal-bookmark-fill', iconClass: 'icon-cyan',
+      title: 'Reglas Básicas', desc: 'Duración, jugadores, sanciones y reglas fundamentales del balonmano.',
+      tag: 'FUNDAMENTOS', tagColor: 'rgba(0,212,255,0.15)', tagText: 'var(--accent-cyan)',
+      wide: false,
+      detail: `<p>El balonmano se juega en dos tiempos de 30 minutos con 10 minutos de descanso. Cada equipo cuenta con 7 jugadores en cancha: seis de campo y un portero. El objetivo es marcar más goles que el equipo rival introduciendo el balón en la portería contraria.</p>
+      <p>Dos árbitros con igual autoridad vigilan la conducta de los jugadores, especialmente en defensa. Las sanciones más corrientes son la exclusión de 2 minutos del terreno de juego, la descalificación y la expulsión. El balón se controla con las yemas de los dedos, requiriendo una gran destreza manual.</p>
+      <p>No se permite dar más de tres pasos con el balón sin botarlo, y el bote debe ser controlado. El contacto físico está regulado de forma estricta: no se permite agarrar, empujar o sujetar al rival. Las infracciones se sancionan con golpe franco o lanzamiento de 7 metros según la gravedad y la zona.</p>`
+    },
+    {
+      id: 'cancha', icon: 'bi-map', iconClass: 'icon-teal',
+      title: 'La Cancha', desc: 'Dimensiones oficiales, zonas y distribución táctica del espacio.',
+      tag: 'ESPACIO', tagColor: 'rgba(0,191,165,0.15)', tagText: 'var(--accent-teal)',
+      wide: true,
+      detail: `<p>La cancha de balonmano mide 40 metros de largo por 20 metros de ancho. El área de 6 metros es la zona exclusiva del portero; ningún jugador de campo puede pisarla con el balón. La línea de 7 metros marca el punto de lanzamiento de penalti. La línea de 9 metros (discontinua) delimita la zona desde donde se ejecutan los golpes francos.</p>
+      <p>Cada zona tiene una función táctica: el área entre la línea de 9m y la de 6m es la zona de máxima peligrosidad ofensiva, mientras que la zona central del campo es el espacio de circulación y organización del ataque. Las bandas son territorio de los extremos, quienes buscan ángulos de tiro dificultosos para la defensa.</p>`
+    },
+    {
+      id: 'posiciones', icon: 'bi-people-fill', iconClass: 'icon-blue',
+      title: 'Posiciones', desc: 'Los 7 roles tácticos: portero, extremos, laterales, central y pivote.',
+      tag: 'ROLES', tagColor: 'rgba(41,121,255,0.15)', tagText: 'var(--accent-blue)',
+      wide: false,
+      detail: `<p>El balonmano cuenta con siete posiciones diferenciadas, cada una con funciones tácticas específicas. El portero defiende la portería y organiza el contraataque. Los extremos (izquierdo y derecho) juegan junto a las líneas laterales y buscan ángulos de tiro sin apenas espacio.</p>
+      <p>Los laterales (izquierdo y derecho) son los lanzadores a distancia, potentes y con buena visión de juego. El central o armador dirige el ataque y toma decisiones de distribución. El pivote se sitúa entre la defensa rival, creando espacios y bloqueos para sus compañeros.</p>
+      <p>El perfil físico varía: los jugadores centrales suelen medir entre 1,95 y 2 metros, mientras que los extremos son más bajos pero poseen una elasticidad excepcional que les permite encarar la portería contraria saltando sin ángulo.</p>`
+    },
+    {
+      id: 'tecnicas', icon: 'bi-bullseye', iconClass: 'icon-orange',
+      title: 'Técnicas de Lanzamiento', desc: 'Suspensión, apoyo y cadera: tres formas de finalizar el ataque.',
+      tag: 'TÉCNICA', tagColor: 'rgba(255,109,0,0.15)', tagText: 'var(--accent-orange)',
+      wide: false,
+      detail: `<p>Las tres técnicas principales de lanzamiento en balonmano son la suspensión, el apoyo y la cadera. Cada una responde a una lectura táctica diferente del juego y ofrece ventajas específicas según la situación.</p>
+      <p><strong>Suspensión:</strong> El jugador marca los pasos y salta para sobrepasar a la defensa en altura, ensayando el tiro en la caída. Es la técnica más potente y espectacular, ideal para superar bloqueos defensivos altos.</p>
+      <p><strong>Apoyo:</strong> El jugador mantiene al menos un pie en el suelo y puede rectificar modificando la postura hacia uno de sus lados. Permite mayor control y engaño al portero.</p>
+      <p><strong>Cadera:</strong> El lanzamiento desde la cadera se realiza ocultando el balón y sorprendiendo a la defensa y al portero en un tiro desde abajo. Es útil para amagar y rectificar el tiro con rapidez.</p>`
+    },
+    {
+      id: 'portero', icon: 'bi-shield-fill-exclamation', iconClass: 'icon-amber',
+      title: 'El Portero', desc: 'Jugador clave: seguridad defensiva, reflejos y origen del contraataque.',
+      tag: 'CLAVE', tagColor: 'rgba(255,171,0,0.15)', tagText: 'var(--accent-amber)',
+      wide: true,
+      detail: `<p>El portero es uno de los jugadores más determinantes del balonmano. De su rendimiento depende en gran medida la seguridad defensiva del equipo. Un buen portero debe ser rápido, muy ágil, con excelentes reflejos y sangre fría.</p>
+      <p>Además, ha de tener una gran visión de juego, ya que casi todos los contraataques nacen de sus manos. Tras una parada, el portero puede iniciar un contraataque veloz con un pase largo, convirtiendo la defensa en ataque en segundos.</p>
+      <p>La jugada más importante del portero es la defensa del lanzamiento de 7 metros (penalti), una acción crítica donde la anticipación, el estudio del lanzador y los reflejos marcan la diferencia entre el gol y la parada.</p>`
+    },
+    {
+      id: 'tacticas', icon: 'bi-diagram-3-fill', iconClass: 'icon-teal',
+      title: 'Jugadas Tácticas', desc: 'Cruce, bloqueo, transición, circulación y fijación defensiva.',
+      tag: 'TÁCTICA', tagColor: 'rgba(0,191,165,0.15)', tagText: 'var(--accent-teal)',
+      wide: false,
+      detail: `<p>Las jugadas tácticas organizan el ataque para desequilibrar la defensa rival. El <strong>cruce</strong> consiste en el intercambio de posiciones entre dos jugadores para confundir a los defensores y crear ventajas numéricas parciales.</p>
+      <p>El <strong>bloqueo del pivote</strong> impide que un defensor pueda seguir el movimiento del atacante, liberando espacio para el lanzamiento. La <strong>transición ofensiva</strong> es el paso rápido de defensa a ataque, aprovechando el desorden rival tras una pérdida o parada.</p>
+      <p>La <strong>circulación rápida</strong> del balón busca desplazar a la defensa lateralmente hasta encontrar una brecha. La <strong>fijación defensiva</strong> atrae a los defensores hacia un lado para liberar espacio en el lado contrario, creando la oportunidad de tiro.</p>`
+    },
+    {
+      id: 'datos', icon: 'bi-bar-chart-fill', iconClass: 'icon-cyan',
+      title: 'Datos Rápidos', desc: 'Cifras clave y datos esenciales del balonmano.',
+      tag: 'DATOS', tagColor: 'rgba(0,212,255,0.15)', tagText: 'var(--accent-cyan)',
+      wide: false,
+      detail: `<ul style="list-style:none;padding:0">
+        <li style="margin-bottom:.6rem"><strong style="color:var(--accent-cyan)">7 jugadores</strong> por equipo (6 de campo + 1 portero)</li>
+        <li style="margin-bottom:.6rem"><strong style="color:var(--accent-cyan)">40 × 20 m</strong> dimensiones oficiales de la cancha</li>
+        <li style="margin-bottom:.6rem"><strong style="color:var(--accent-cyan)">2 × 30 min</strong> duración del partido (10 min descanso)</li>
+        <li style="margin-bottom:.6rem"><strong style="color:var(--accent-cyan)">6 m</strong> área exclusiva del portero</li>
+        <li style="margin-bottom:.6rem"><strong style="color:var(--accent-cyan)">7 m</strong> línea de penalti</li>
+        <li style="margin-bottom:.6rem"><strong style="color:var(--accent-cyan)">9 m</strong> línea de golpe franco</li>
+        <li style="margin-bottom:.6rem"><strong style="color:var(--accent-cyan)">FC Barcelona</strong> equipo más laureado de la historia con 6 Copas de Europa</li>
+        <li style="margin-bottom:.6rem"><strong style="color:var(--accent-cyan)">Balón de cuero</strong> se sujeta con las yemas de los dedos</li>
+        <li><strong style="color:var(--accent-cyan)">Bronces olímpicos</strong> en Atlanta 1996 y Sídney 2000</li>
+      </ul>`
+    },
+    {
+      id: 'quiz', icon: 'bi-patch-question-fill', iconClass: 'icon-amber',
+      title: 'Autoevaluación', desc: 'Pon a prueba lo aprendido con preguntas de opción múltiple.',
+      tag: 'TEST', tagColor: 'rgba(255,171,0,0.15)', tagText: 'var(--accent-amber)',
+      wide: false,
+      detail: null
+    }
+  ],
+  history: [
+    { year: 'Antigua Grecia', text: 'Ya existen referencias a juegos similares al balonmano en la antigua Grecia, aunque con reglas muy diferentes a las actuales.' },
+    { year: 'Finales s. XIX', text: 'Orígenes modernos del balonmano, cuando comenzaron a codificarse las primeras reglas en países del norte de Europa.' },
+    { year: 'Post I Guerra Mundial', text: 'El balonmano se asienta definitivamente como deporte organizado. Inicialmente se jugaba con 11 jugadores, como derivación del fútbol.' },
+    { year: 'Consolidación', text: 'Se reduce el número de jugadores a 7 por equipo, configurando el formato actual del balonmano moderno que conocemos hoy.' },
+    { year: 'Atlanta 1996', text: 'La selección española consigue la medalla de bronce en los Juegos Olímpicos, consolidando el balonmano como tercer deporte en importancia.' },
+    { year: 'Sídney 2000', text: 'Nueva medalla de bronce olímpica para España. El FC Barcelona domina el panorama europeo con seis Copas de Europa.' }
+  ],
+  courtLegend: [
+    { color: 'var(--accent-cyan)', label: 'Líneas del campo' },
+    { color: 'var(--accent-amber)', label: 'Línea de 7m (penalti)' },
+    { color: 'rgba(0,212,255,0.3)', label: 'Área de 6m' },
+    { color: 'var(--accent-orange)', label: 'Zona de ataque' }
+  ],
+  positions: [
+    {
+      name: 'Portero', icon: 'bi-shield-fill', iconClass: 'icon-amber',
+      role: 'Última línea defensiva',
+      attrs: ['Reflejos', 'Agilidad', 'Visión', 'Sangre fría'],
+      desc: 'De su rendimiento depende la seguridad defensiva del equipo. Debe ser rápido, ágil y con gran visión de juego. Casi todos los contraataques nacen de sus manos. La defensa del penalti de 7m es su acción más crítica.'
+    },
+    {
+      name: 'Extremo Izquierdo', icon: 'bi-arrow-left', iconClass: 'icon-cyan',
+      role: 'Ataque por banda izquierda',
+      attrs: ['Elasticidad', 'Velocidad', 'Agilidad', 'Tiro angular'],
+      desc: 'Juega junto a la línea lateral izquierda. Es más bajo que otros jugadores pero posee una elasticidad excepcional que le permite encarar la portería saltando sin apenas ángulo. Busca finalizaciones en posiciones dificultosas.'
+    },
+    {
+      name: 'Extremo Derecho', icon: 'bi-arrow-right', iconClass: 'icon-cyan',
+      role: 'Ataque por banda derecha',
+      attrs: ['Elasticidad', 'Velocidad', 'Agilidad', 'Tiro angular'],
+      desc: 'Simétrico al extremo izquierdo, opera por la banda derecha. Su capacidad para lanzar desde ángulos cerrados y su rapidez de ejecución son fundamentales para romper defensas cerradas.'
+    },
+    {
+      name: 'Lateral Izquierdo', icon: 'bi-box-arrow-up-left', iconClass: 'icon-blue',
+      role: 'Lanzador a distancia',
+      attrs: ['Potencia', 'Tiro lejano', 'Visión', 'Envergadura'],
+      desc: 'Jugador potente y con gran tiro a distancia. Su altura suele oscilar entre 1,95 y 2 metros. Lanza desde la línea de 9m y busca desequilibrar la defensa con potencia y precisión.'
+    },
+    {
+      name: 'Lateral Derecho', icon: 'bi-box-arrow-up-right', iconClass: 'icon-blue',
+      role: 'Lanzador a distancia',
+      attrs: ['Potencia', 'Tiro lejano', 'Visión', 'Envergadura'],
+      desc: 'Simétrico al lateral izquierdo, aporta potencia de tiro desde el lado derecho. Colabora en la circulación del balón y en la creación de espacios para los compañeros.'
+    },
+    {
+      name: 'Central', icon: 'bi-bullseye', iconClass: 'icon-teal',
+      role: 'Director del ataque',
+      attrs: ['Liderazgo', 'Visión', 'Pase', 'Toma de decisiones'],
+      desc: 'El armador del equipo. Dirige las jugadas de ataque, distribuye el balón y toma decisiones clave. Debe leer la defensa rival y organizar el juego colectivo con inteligencia táctica.'
+    },
+    {
+      name: 'Pivote', icon: 'bi-box-seam', iconClass: 'icon-orange',
+      role: 'Infiltración defensiva',
+      attrs: ['Fuerza', 'Posición', 'Bloqueo', 'Resistencia'],
+      desc: 'Se sitúa entre la defensa rival, creando espacios y bloqueos para sus compañeros. Su presencia desestabiliza la defensa y abre líneas de pase y tiro para los lanzadores exteriores.'
+    }
+  ],
+  techniques: [
+    {
+      name: 'Suspensión', color: 'var(--accent-cyan)',
+      subtitle: 'Potencia y elevación',
+      when: 'Cuando se necesita superar a la defensa en altura, especialmente ante bloqueos defensivos altos y defensas cerradas.',
+      advantage: 'Ofrece mayor ángulo de tiro y potencia al lanzar desde una posición elevada, dificultando la intervención del portero.',
+      reading: 'El jugador marca los pasos y salta en suspensión para sobrepasar a la defensa en altura, ensayando el tiro en la caída. Requiere calcular el momento óptimo de salto y la trayectoria del balón.'
+    },
+    {
+      name: 'Apoyo', color: 'var(--accent-teal)',
+      subtitle: 'Control y engaño',
+      when: 'Cuando el jugador necesita mantener la opción de rectificar la dirección del tiro o amagar ante la defensa.',
+      advantage: 'Al mantener un pie en el suelo, el jugador puede modificar su postura hacia uno de los lados, lo que permite amagar y engañar al portero con mayor facilidad.',
+      reading: 'El jugador mantiene al menos un pie en el suelo y puede rectificar modificando la postura hacia uno de sus lados. Es ideal para situaciones donde la lectura defensiva requiere mayor versatilidad.'
+    },
+    {
+      name: 'Cadera', color: 'var(--accent-amber)',
+      subtitle: 'Sorpresa desde abajo',
+      when: 'Cuando se busca sorprender a la defensa y al portero con un tiro inesperado desde una posición baja.',
+      advantage: 'El lanzamiento desde la cadera permite ocultar el balón y amagar el tiro, sorprendiendo a la defensa y al portero en un tiro desde abajo que es difícil de anticipar.',
+      reading: 'Se realiza ocultando el balón y pudiendo amagar el tiro y rectificarlo, sorprendiendo a la defensa y al portero. Exige gran habilidad de muñeca y control del balón con las yemas de los dedos.'
+    }
+  ],
+  goalkeeperFeatures: [
+    { icon: '🛡️', title: 'Seguridad Defensiva', desc: 'De su rendimiento depende en gran medida la solidez defensiva del equipo. Una parada puede cambiar el ritmo del partido.' },
+    { icon: '⚡', title: 'Reflejos y Agilidad', desc: 'Debe ser rápido, muy ágil y con excelentes reflejos y sangre fría para reaccionar ante lanzamientos a corta distancia.' },
+    { icon: '👁️', title: 'Visión de Juego', desc: 'Ha de tener una gran visión de juego ya que casi todos los contraataques nacen de sus manos tras una parada.' },
+    { icon: '🔄', title: 'Contraataque', desc: 'Tras una parada, puede iniciar un contraataque veloz con un pase largo, convirtiendo la defensa en ataque en segundos.' },
+    { icon: '🎯', title: 'Penalti de 7m', desc: 'La jugada más importante del portero: la defensa del lanzamiento de 7 metros, una acción crítica que requiere anticipación y estudio del lanzador.' },
+    { icon: '🧠', title: 'Sangre Fría', desc: 'La capacidad de mantener la calma bajo presión, especialmente en situaciones de penalti y momentos decisivos del partido.' }
+  ],
+  tactics: [
+    { name: 'Cruce', desc: 'Intercambio de posiciones entre dos jugadores para confundir a los defensores y crear ventajas numéricas parciales. El cruce bien ejecutado genera desorden defensivo y abre espacios de tiro.' },
+    { name: 'Bloqueo del Pivote', desc: 'El pivote se posiciona para impedir que un defensor pueda seguir el movimiento del atacante, liberando espacio para el lanzamiento. Es fundamental en el ataque estático organizado.' },
+    { name: 'Transición Ofensiva', desc: 'El paso rápido de defensa a ataque tras una pérdida o parada, aprovechando el desorden rival. La velocidad de ejecución es clave: el equipo que transita más rápido suele obtener ventaja numérica.' },
+    { name: 'Circulación Rápida', desc: 'Movimiento veloz del balón entre los jugadores exteriores para desplazar a la defensa lateralmente hasta encontrar una brecha. La paciencia y la precisión del pase son esenciales.' },
+    { name: 'Fijación Defensiva', desc: 'Atraer a los defensores hacia un lado para liberar espacio en el lado contrario. El jugador con balón fija la atención defensiva mientras un compañero se desmarca al espacio creado.' }
+  ],
+  rules: [
+    { q: '¿Cuánto dura un partido de balonmano?', a: 'Un partido estándar dura dos tiempos de 30 minutos cada uno con 10 minutos de descanso entre ambos periodos. En caso de empate en eliminatorias, se juegan prórrogas de 2 × 5 minutos.' },
+    { q: '¿Cuántos jugadores por equipo?', a: 'Cada equipo juega con 7 jugadores en cancha: seis jugadores de campo y un portero. Las sustituciones son ilimitadas y pueden realizarse en cualquier momento.' },
+    { q: '¿Qué sanciones existen?', a: 'Las sanciones más corrientes son la exclusión de 2 minutos del terreno de juego, la descalificación (tarjeta roja, sustituible tras 2 min) y la expulsión (definitiva, el equipo juega con uno menos). Dos árbitros con igual autoridad vigilan el cumplimiento.' },
+    { q: '¿Cómo se controla el balón?', a: 'El balón se sujeta con las yemas de los dedos. No se permite dar más de tres pasos sin botarlo. El bote debe ser controlado. El equipo que recibe la pelota debe levantarla si viene demasiado baja, recurriendo a caídas y planchas.' },
+    { q: '¿Qué es el golpe franco?', a: 'Se sanciona con golpe franco cualquier infracción de las reglas que no constituya una ocasión manifiesta de gol. Se ejecuta desde la línea de 9 metros sin barrera del rival.' },
+    { q: '¿Cuándo se lanza de 7 metros?', a: 'El lanzamiento de 7 metros (penalti) se sanciona cuando un jugador comete una infracción que impide una ocasión manifiesta de gol. Se lanza desde la línea de 7m contra el portero, sin interferencia de otros jugadores.' }
+  ],
+  quizQuestions: [
+    {
+      question: '¿Cuántos jugadores por equipo participan en un partido de balonmano?',
+      options: ['5 jugadores', '6 jugadores', '7 jugadores', '8 jugadores'],
+      correct: 2,
+      feedback: 'Cada equipo juega con 7 jugadores: seis de campo y un portero.'
+    },
+    {
+      question: '¿Cuál es la dimensión oficial de la cancha de balonmano?',
+      options: ['50 m × 25 m', '40 m × 20 m', '45 m × 22 m', '38 m × 18 m'],
+      correct: 1,
+      feedback: 'La cancha oficial mide 40 metros de largo por 20 metros de ancho.'
+    },
+    {
+      question: '¿Cuánto dura cada tiempo de un partido de balonmano?',
+      options: ['25 minutos', '30 minutos', '35 minutos', '45 minutos'],
+      correct: 1,
+      feedback: 'El partido se juega en dos tiempos de 30 minutos con 10 minutos de descanso.'
+    },
+    {
+      question: '¿Cuál es la función principal del pivote en el ataque?',
+      options: ['Lanzar a distancia', 'Dirigir el ataque', 'Crear espacios y bloqueos entre la defensa', 'Defender la portería'],
+      correct: 2,
+      feedback: 'El pivote se sitúa entre la defensa rival, creando espacios y bloqueos para sus compañeros.'
+    },
+    {
+      question: '¿Qué técnica de lanzamiento permite rectificar la dirección del tiro manteniendo un pie en el suelo?',
+      options: ['Suspensión', 'Cadera', 'Apoyo', 'Volea'],
+      correct: 2,
+      feedback: 'En el lanzamiento de apoyo, el jugador mantiene al menos un pie en el suelo y puede rectificar modificando su postura.'
+    }
+  ],
+  takeaways: [
+    { icon: 'bi-lightbulb-fill', text: 'El balonmano es táctico', sub: 'Cada decisión cuenta' },
+    { icon: 'bi-shield-fill', text: 'El portero es clave', sub: 'Seguridad y contraataque' },
+    { icon: 'bi-people-fill', text: '7 roles, 1 equipo', sub: 'Especialización coordinada' },
+    { icon: 'bi-bullseye', text: '3 técnicas de tiro', sub: 'Suspensión, apoyo, cadera' },
+    { icon: 'bi-diagram-3-fill', text: 'La táctica gana partidos', sub: 'Movimiento colectivo' }
+  ]
+};
+
+// ============================================================
+// RENDER ENGINE
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderHeroMetrics();
+  renderHeroSatellites();
+  renderHubGrid();
+  renderHistory();
+  renderCourtLegend();
+  renderPositions();
+  renderTechniques();
+  renderGoalkeeper();
+  renderTactics();
+  renderRules();
+  renderQuiz();
+  renderTakeaways();
+  initScrollAnimations();
+  initContrastToggle();
+  initPWA();
+});
+
+function renderHeroMetrics() {
+  const el = document.getElementById('heroMetrics');
+  el.innerHTML = DATA.heroMetrics.map(m => `
+    <div class="hero-metric">
+      <div class="hero-metric-val">${m.value}</div>
+      <div class="hero-metric-label">${m.label}</div>
+    </div>
+  `).join('');
+}
+
+function renderHeroSatellites() {
+  const satGroup = document.getElementById('heroSatellites');
+  const lineGroup = document.getElementById('heroLines');
+  const cx = 160, cy = 160, r = 115;
+  DATA.heroSatellites.forEach(s => {
+    const rad = (s.angle * Math.PI) / 180;
+    const x = cx + r * Math.cos(rad);
+    const y = cy + r * Math.sin(rad);
+    lineGroup.innerHTML += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="var(--accent-cyan)" stroke-width=".8"/>`;
+    satGroup.innerHTML += `
+      <g style="cursor:default">
+        <circle cx="${x}" cy="${y}" r="22" fill="rgba(0,212,255,0.08)" stroke="var(--accent-cyan)" stroke-width="1"/>
+        <text x="${x}" y="${y+1}" text-anchor="middle" dominant-baseline="middle" fill="var(--accent-cyan)" font-size="6.5" font-weight="600" font-family="Inter">${s.label}</text>
+      </g>
+    `;
+  });
+}
+
+function renderHubGrid() {
+  const grid = document.getElementById('hubGrid');
+  grid.innerHTML = DATA.hubModules.map(m => `
+    <div class="bento-card ${m.wide ? 'bento-wide' : ''} fade-up" 
+         data-module="${m.id}" tabindex="0" role="button" 
+         aria-label="Abrir módulo: ${m.title}">
+      <span class="bento-card-tag" style="background:${m.tagColor};color:${m.tagText}">${m.tag}</span>
+      <div class="bento-card-icon ${m.iconClass}"><i class="bi ${m.icon}"></i></div>
+      <div class="bento-card-title">${m.title}</div>
+      <div class="bento-card-desc">${m.desc}</div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.bento-card').forEach(card => {
+    const handler = () => {
+      const modId = card.dataset.module;
+      const mod = DATA.hubModules.find(m => m.id === modId);
+      if (!mod) return;
+      if (modId === 'quiz') {
+        document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+      if (mod.detail) {
+        document.getElementById('hubModalLabel').textContent = mod.title;
+        document.getElementById('hubModalBody').innerHTML = mod.detail;
+        new bootstrap.Modal(document.getElementById('hubModal')).show();
+      }
+    };
+    card.addEventListener('click', handler);
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(); } });
+  });
+}
+
+function renderHistory() {
+  const el = document.getElementById('historyTimeline');
+  el.innerHTML = DATA.history.map(h => `
+    <div class="history-item fade-up">
+      <div class="history-year">${h.year}</div>
+      <div class="history-text">${h.text}</div>
+    </div>
+  `).join('');
+}
+
+function renderCourtLegend() {
+  const el = document.getElementById('courtLegend');
+  el.innerHTML = DATA.courtLegend.map(l => `
+    <div class="court-legend-item">
+      <span class="court-legend-swatch" style="background:${l.color}"></span>
+      <span>${l.label}</span>
+    </div>
+  `).join('');
+}
+
+function renderPositions() {
+  const grid = document.getElementById('positionsGrid');
+  grid.innerHTML = DATA.positions.map(p => `
+    <div class="col-md-6 col-lg-4 fade-up">
+      <div class="position-card">
+        <div class="position-header">
+          <div class="position-icon ${p.iconClass}"><i class="bi ${p.icon}"></i></div>
+          <div>
+            <div class="position-name">${p.name}</div>
+            <div class="position-role">${p.role}</div>
+          </div>
+        </div>
+        <div class="position-attrs">${p.attrs.map(a => `<span class="position-attr">${a}</span>`).join('')}</div>
+        <div class="position-desc">${p.desc}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTechniques() {
+  const grid = document.getElementById('techniquesGrid');
+  grid.innerHTML = DATA.techniques.map(t => `
+    <div class="col-lg-4 fade-up">
+      <div class="technique-card">
+        <div class="technique-card-accent" style="background:${t.color}"></div>
+        <div class="technique-title">${t.name}</div>
+        <div class="technique-subtitle">${t.subtitle}</div>
+        <div class="technique-detail"><strong>Cuándo se usa:</strong> ${t.when}</div>
+        <div class="technique-detail"><strong>Ventaja que ofrece:</strong> ${t.advantage}</div>
+        <div class="technique-detail"><strong>Lectura táctica:</strong> ${t.reading}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderGoalkeeper() {
+  const el = document.getElementById('gkFeatures');
+  el.innerHTML = DATA.goalkeeperFeatures.map(f => `
+    <div class="gk-feature">
+      <div class="gk-feature-icon">${f.icon}</div>
+      <div class="gk-feature-title">${f.title}</div>
+      <div class="gk-feature-desc">${f.desc}</div>
+    </div>
+  `).join('');
+}
+
+function renderTactics() {
+  const grid = document.getElementById('tacticsGrid');
+  grid.innerHTML = DATA.tactics.map((t, i) => `
+    <div class="col-md-6 col-lg-4 fade-up">
+      <div class="tactic-item">
+        <div class="tactic-number">${String(i + 1).padStart(2, '0')}</div>
+        <div class="tactic-name">${t.name}</div>
+        <div class="tactic-desc">${t.desc}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderRules() {
+  const acc = document.getElementById('rulesAccordion');
+  acc.innerHTML = DATA.rules.map((r, i) => `
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rule${i}" aria-expanded="false" aria-controls="rule${i}">
+          ${r.q}
+        </button>
+      </h2>
+      <div id="rule${i}" class="accordion-collapse collapse" data-bs-parent="#rulesAccordion">
+        <div class="accordion-body">${r.a}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTakeaways() {
+  const grid = document.getElementById('takeawayGrid');
+  grid.innerHTML = DATA.takeaways.map(t => `
+    <div class="col-6 col-md fade-up">
+      <div class="takeaway-item">
+        <div class="takeaway-icon"><i class="bi ${t.icon}"></i></div>
+        <div class="takeaway-text">${t.text}</div>
+        <div class="takeaway-sub">${t.sub}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ============================================================
+// QUIZ ENGINE
+// ============================================================
+
+let quizState = { current: 0, score: 0, answered: false, finished: false };
+
+function renderQuiz() {
+  renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+  const container = document.getElementById('quizContainer');
+  if (quizState.finished) {
+    renderQuizResult();
+    return;
+  }
+  const q = DATA.quizQuestions[quizState.current];
+  const progress = ((quizState.current) / DATA.quizQuestions.length) * 100;
+  container.innerHTML = `
+    <div class="quiz-progress"><div class="quiz-progress-bar" style="width:${progress}%"></div></div>
+    <div class="quiz-question-num">Pregunta ${quizState.current + 1} de ${DATA.quizQuestions.length}</div>
+    <div class="quiz-question">${q.question}</div>
+    <div class="quiz-options">
+      ${q.options.map((opt, i) => `
+        <button class="quiz-option" data-index="${i}" aria-label="Opción ${i+1}: ${opt}">${opt}</button>
+      `).join('')}
+    </div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <div class="quiz-btns">
+      <button class="btn-quiz btn-quiz-primary" id="quizNext" disabled>Siguiente <i class="bi bi-arrow-right"></i></button>
+    </div>
+  `;
+
+  container.querySelectorAll('.quiz-option').forEach(btn => {
+    btn.addEventListener('click', () => handleQuizAnswer(btn, parseInt(btn.dataset.index)));
+  });
+
+  document.getElementById('quizNext').addEventListener('click', () => {
+    quizState.current++;
+    quizState.answered = false;
+    renderQuizQuestion();
+  });
+}
+
+function handleQuizAnswer(btn, index) {
+  if (quizState.answered) return;
+  quizState.answered = true;
+  const q = DATA.quizQuestions[quizState.current];
+  const correct = index === q.correct;
+  const feedback = document.getElementById('quizFeedback');
+
+  if (correct) {
+    quizState.score++;
+    btn.classList.add('correct');
+    feedback.className = 'quiz-feedback show correct-fb';
+    feedback.innerHTML = `<strong>¡Correcto!</strong> ${q.feedback}`;
+  } else {
+    btn.classList.add('incorrect');
+    feedback.className = 'quiz-feedback show incorrect-fb';
+    feedback.innerHTML = `<strong>Incorrecto.</strong> ${q.feedback}`;
+    const correctBtn = document.querySelector(`.quiz-option[data-index="${q.correct}"]`);
+    if (correctBtn) correctBtn.classList.add('correct');
+  }
+
+  document.querySelectorAll('.quiz-option').forEach(b => b.style.pointerEvents = 'none');
+  const nextBtn = document.getElementById('quizNext');
+  nextBtn.disabled = false;
+  if (quizState.current === DATA.quizQuestions.length - 1) {
+    nextBtn.textContent = 'Ver resultado';
+    nextBtn.innerHTML = 'Ver resultado <i class="bi bi-trophy"></i>';
+  }
+}
+
+function renderQuizResult() {
+  const container = document.getElementById('quizContainer');
+  const pct = Math.round((quizState.score / DATA.quizQuestions.length) * 100);
+  let msg = '';
+  if (pct === 100) msg = '¡Excelente! Dominas los fundamentos del balonmano.';
+  else if (pct >= 60) msg = '¡Bien! Tienes una buena base. Repasa los módulos para completar tu conocimiento.';
+  else msg = 'Te recomendamos revisar los módulos de aprendizaje antes de intentar de nuevo.';
+
+  container.innerHTML = `
+    <div class="quiz-result">
+      <div class="quiz-result-score">${quizState.score}/${DATA.quizQuestions.length}</div>
+      <div class="quiz-result-label">Respuestas correctas</div>
+      <div class="quiz-result-msg">${msg}</div>
+      <div style="margin-top:2rem">
+        <button class="btn-quiz btn-quiz-primary" id="quizRestart"><i class="bi bi-arrow-counterclockwise me-1"></i>Reiniciar</button>
+        <a href="#hub" class="btn-quiz btn-quiz-secondary ms-2"><i class="bi bi-grid-3x3-gap-fill me-1"></i>Repasar módulos</a>
+      </div>
+    </div>
+  `;
+  document.getElementById('quizRestart').addEventListener('click', () => {
+    quizState = { current: 0, score: 0, answered: false, finished: false };
+    renderQuizQuestion();
+  });
+  // Mark quiz as finished for progress
+  quizState.finished = true;
+  const bar = container.querySelector('.quiz-progress-bar');
+  if (!bar) {
+    const prog = document.createElement('div');
+    prog.className = 'quiz-progress';
+    prog.innerHTML = `<div class="quiz-progress-bar" style="width:100%"></div>`;
+    container.prepend(prog);
+  }
+}
+
+// ============================================================
+// SCROLL ANIMATIONS
+// ============================================================
+
+function initScrollAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Re-observe dynamically added elements after a short delay
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => observer.observe(el));
+  }, 500);
+}
+
+// ============================================================
+// HIGH CONTRAST TOGGLE
+// ============================================================
+
+function initContrastToggle() {
+  const btn = document.getElementById('btnContrast');
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('high-contrast');
+    btn.classList.toggle('active');
+  });
+}
+
+// ============================================================
+// PWA — Manifest & Service Worker
+// ============================================================
+
+function initPWA() {
+  // Embedded manifest via Data URI
+  const manifest = {
+    name: 'Infografía Balonmano',
+    short_name: 'Balonmano',
+    description: 'Infografía educativa interactiva sobre balonmano',
+    start_url: './balonmano-pwa.html',
+    display: 'standalone',
+    background_color: '#0a1628',
+    theme_color: '#0a1628',
+    icons: [{
+      src: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="32" fill="#0a1628"/><circle cx="96" cy="96" r="50" fill="none" stroke="#00d4ff" stroke-width="6"/><circle cx="96" cy="96" r="20" fill="#00d4ff" opacity="0.3"/><text x="96" y="104" text-anchor="middle" fill="#00d4ff" font-size="28" font-weight="bold" font-family="sans-serif">BM</text></svg>'),
+      sizes: '192x192',
+      type: 'image/svg+xml'
+    }]
+  };
+  const manifestBlob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+  const manifestURL = URL.createObjectURL(manifestBlob);
+  document.getElementById('pwa-manifest').href = manifestURL;
+
+  // Service Worker via Blob
+  if ('serviceWorker' in navigator) {
+    const swCode = `
+      const CACHE_NAME = 'balonmano-v1';
+      const ASSETS = [];
+      self.addEventListener('install', e => {
+        e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)).catch(() => {}));
+        self.skipWaiting();
+      });
+      self.addEventListener('activate', e => {
+        e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))));
+        self.clients.claim();
+      });
+      self.addEventListener('fetch', e => {
+        e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+      });
+    `;
+    const swBlob = new Blob([swCode], { type: 'application/javascript' });
+    const swURL = URL.createObjectURL(swBlob);
+    navigator.serviceWorker.register(swURL).catch(() => {});
+  }
+}
+</script>
+</body>
+</html>
